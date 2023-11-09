@@ -17,6 +17,16 @@ public class Book
     rating = 0;
   }
   
+  // 2.5.7 Step 24 - 11/09/2023
+  public boolean equals(Book b) {
+    // 2.5.7 Step 26 & 29 - 11/09/2023
+    if (b.author.equals(this.author) && b.title.equals(this.title)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
    /*** Accessor methods ***/
   public String getTitle() {
     return title;
@@ -47,5 +57,12 @@ public class Book
 
   public void setAuthor(String a) {
     author = a;
+  }
+
+  // 2.5.7 Step 7 - 11/09/2023
+  public void adjustRating(int r) {
+    // 2.5.7 Step 10 - 11/09/2023
+    if ((rating + r) <= 10 && (rating + r) >= 0)
+      rating += r;
   }
 }
