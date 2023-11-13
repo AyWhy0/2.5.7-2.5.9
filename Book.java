@@ -16,8 +16,17 @@ public class Book
     title = t;
     author = a;
     rating = 0;
+
+    // 2.5.9 Step 6 - 11/13/2023
+    // System.out.println("Adding book " + t);
   }
   
+  // 2.5.9 Step 1 - 11/13/2023
+  // public String getInfo()
+  // {
+  //   return "The current book information is " + info;
+  // }
+
   // 2.5.7 Step 24 - 11/09/2023
   public boolean equals(Book b) {
     // 2.5.7 Step 26 & 29 - 11/09/2023
@@ -26,6 +35,9 @@ public class Book
     } else {
       return false;
     }
+
+    // 2.5.9 Step 8 - 11/13/2023
+    // System.out.println("Checking book " + t);
   }
 
    /*** Accessor methods ***/
@@ -65,5 +77,8 @@ public class Book
     // 2.5.7 Step 10 - 11/09/2023
     if ((rating + r) <= 10 && (rating + r) >= 0)
       rating += r;
+
+    // 2.5.9 Step 10 - 11/13/2023
+    System.out.println("Adjusting rating by " + r);
   }
 }

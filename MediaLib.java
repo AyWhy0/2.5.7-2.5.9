@@ -19,6 +19,14 @@ public class MediaLib
   private static int numBookEntries;
   private static int numMovieEntries;
   private static int numSongEntries;
+  // 2.5.9 Step 22 - 11/13/2023
+  private String dateStarted;
+  private String dateUpdated;
+
+  public MediaLib() {
+    dateStarted = DateAndTime.getDateTime();
+    dateUpdated = dateStarted;
+  }
 
   // 2.5.8 Step 2 - 11/11/2023
   public static String getOwner() {
@@ -39,11 +47,12 @@ public class MediaLib
   public void addBook(Book b)
   {
     // 2.5.8 Step 23 - 11/11/2023
-    if (book.equals(null)) {
+    if (book == null) {
       book = b;
       // 2.5.8 Step 15 - 11/11/2023
       numEntries += 1;
       numBookEntries += 1;
+      dateUpdated = DateAndTime.getDateTime(); // 2.5.9 Step 22 - 11/13/2023
     } else {
       // 2.5.8 Step 24 - 11/11/2023
       System.out.println("One book is already in the library :(");
@@ -54,11 +63,12 @@ public class MediaLib
   public void addMovie(Movie m)
   {
     // 2.5.8 Step 23 - 11/11/2023
-    if (movie.equals(null)) {
+    if (movie == null) {
       movie = m;
       // 2.5.8 Step 15 - 11/11/2023
       numEntries += 1;
       numMovieEntries += 1;
+      dateUpdated = DateAndTime.getDateTime(); // 2.5.9 Step 22 - 11/13/2023
     } else {
       // 2.5.8 Step 24 - 11/11/2023
       System.out.println("One movie is already in the library :(");
@@ -68,10 +78,11 @@ public class MediaLib
   // 2.5.8 Step 27 - 11/11/2023
   public void addSong(Song s)
   {
-    if (song.equals(null)) {
+    if (song == null) {
       song = s;
       numEntries += 1;
       numSongEntries += 1;
+      dateUpdated = DateAndTime.getDateTime(); // 2.5.9 Step 22 - 11/13/2023
     } else {
       System.out.println("One song is already in the library :(");
     }
@@ -81,23 +92,41 @@ public class MediaLib
   public void changeOwner(String o)
   {
     owner = o;
+    // 2.5.9 Step 22 - 11/13/2023
+    dateUpdated = DateAndTime.getDateTime(); 
   }
 
   // 2.5.8 Step 25 - 11/11/2023
   public void changeBook(Book b)
   {
     book = b;
+    // 2.5.9 Step 22 - 11/13/2023
+    dateUpdated = DateAndTime.getDateTime();
   }
 
   public void changeMovie(Movie m)
   {
     movie = m;
+    // 2.5.9 Step 22 - 11/13/2023
+    dateUpdated = DateAndTime.getDateTime();
   }
 
   public String toString() 
   {
     // 2.5.7 Step 5 & 31 - 11/09/2023
-    String info = book.toString() + "; " + movie.toString() + "; " + song.toString();
+    // String info = book.toString() + "; " + movie.toString() + "; " + song.toString() + " : Last Updated " + dateUpdated; 
+    String info = "";
+    if (book != null) {
+      info += book.toString() + "; ";
+    }
+    if (movie != null) {
+      info += movie.toString() + "; ";
+    }
+    if (song != null) {
+      info += song.toString();
+    }
+    
+    info += " : Last Updated " + dateUpdated;
     
     return info;
   }

@@ -16,9 +16,9 @@ public class Movie {
     // 2.5.7 Step 32 - 11/09/2023
     public boolean equals(Movie m) {
         if (m.duration == this.duration && m.title.equals(this.title)) {
-        return true;
+            return true;
         } else {
-        return false;
+            return false;
         }
     }
 
@@ -37,7 +37,7 @@ public class Movie {
     
     public String toString() 
     {
-        String info = "\"" + title + "\" is " + duration + " hours long.";
+        String info = "\"" + title + "\": " + duration + " hours long";
         if (rating != 0) 
         { 
         info += ", rating is " + rating;
